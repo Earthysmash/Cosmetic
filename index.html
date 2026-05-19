@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>จากพ่อบ้านสู่พ่อบ้าน | BombBath — เครื่องสำอางห้องน้ำสำหรับพ่อบ้านยุคใหม่</title>
+  <meta name="description" content="โยน รอ 15 นาที ล้างน้ำเปล่า เสร็จ — ดูบอลต่อ เล่นเกมต่อ ไม่ต้องนั่งขัดที่ละแปรง">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-white overflow-x-hidden antialiased">
+
+  <!-- Cursor glow -->
+  <div class="cursor-glow"></div>
+
+  <!-- Floating bubbles background -->
+  <div class="bubbles-container" aria-hidden="true"></div>
+
+  <!-- Grain texture overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-slate-950/60 border-b border-white/5">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 text-2xl font-extrabold">
+        <span class="text-3xl">💣</span>
+        <span class="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">BombBath</span>
+      </a>
+      <div class="hidden md:flex gap-8 text-sm text-slate-300">
+        <a href="#problem" class="hover:text-cyan-400 transition-colors">ปัญหา</a>
+        <a href="#solution" class="hover:text-cyan-400 transition-colors">วิธีแก้</a>
+        <a href="#how" class="hover:text-cyan-400 transition-colors">วิธีใช้</a>
+        <a href="#products" class="hover:text-cyan-400 transition-colors">สินค้า</a>
+        <a href="#order" class="hover:text-cyan-400 transition-colors">สั่งซื้อ</a>
+      </div>
+      <a href="#order" class="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-semibold hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50 transition-all text-sm">
+        สั่งเลย
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========================= HERO ========================= -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-12">
+    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm mb-6">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          เครื่องสำอางห้องน้ำ • ผลิตในประเทศไทย
+        </div>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] mb-6 tracking-tight">
+          <span class="block">จาก</span>
+          <span class="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500 bg-clip-text text-transparent animated-gradient">พ่อบ้าน</span>
+          <span class="block text-3xl md:text-4xl text-slate-400 font-light italic my-2">— สู่ —</span>
+          <span class="block bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400 bg-clip-text text-transparent animated-gradient">พ่อบ้าน</span>
+        </h1>
+        <p class="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg">
+          หยุดนั่งขัดห้องน้ำที่ละแปรง <br>
+          <span class="text-cyan-400 font-semibold">เริ่มดูบอลให้จบเกม</span> 🍻
+        </p>
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a href="#order" class="group px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-pink-500 font-semibold text-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all hover:scale-105 flex items-center gap-2">
+            <span>🛒 สั่งซื้อเลย</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+          <a href="#how" class="px-8 py-4 rounded-full border-2 border-white/20 font-semibold text-lg hover:bg-white/5 hover:border-white/40 transition-all">
+            ดูวิธีใช้
+          </a>
+        </div>
+        <div class="flex gap-8 flex-wrap">
+          <div>
+            <div class="text-4xl font-black text-cyan-400" data-counter="15">0</div>
+            <div class="text-slate-400 text-sm">นาที เสร็จงาน</div>
+          </div>
+          <div class="border-l border-white/10 pl-8">
+            <div class="text-4xl font-black text-pink-400" data-counter="0">0</div>
+            <div class="text-slate-400 text-sm">แปรง ไม่ต้องขัด</div>
+          </div>
+          <div class="border-l border-white/10 pl-8">
+            <div class="text-4xl font-black text-purple-400" data-counter="100">0</div>
+            <div class="text-slate-400 text-sm">% เมียพอใจ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero visual: animated bath bomb + tub -->
+      <div class="relative">
+        <div class="hero-stage">
+          <div class="tub-bg"></div>
+          <div class="ripple ripple-1"></div>
+          <div class="ripple ripple-2"></div>
+          <div class="ripple ripple-3"></div>
+          <div class="hero-bomb" id="heroBomb">
+            <div class="bomb-shine"></div>
+          </div>
+          <div class="fizz">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-0 text-xs text-slate-500 italic">
+          ↑ คลิกระเบิดดูเลย
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 text-xs animate-bounce">
+      ↓ เลื่อนลงดูต่อ
+    </div>
+  </section>
+
+  <!-- ========================= PROBLEM ========================= -->
+  <section id="problem" class="py-32 relative">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <div class="text-pink-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">😩 ปัญหาที่พ่อบ้านทุกคนเจอ</div>
+        <h2 class="text-4xl md:text-6xl font-black mb-6">
+          มันคุ้นๆ ใช่ไหมครับ?
+        </h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          ทุกครั้งที่มีโมเมนต์เด็ดในชีวิต... จะมีเสียงเรียกมาเสมอ
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="problem-card reveal" style="--accent: #06b6d4;">
+          <div class="text-6xl mb-4">⚽</div>
+          <div class="text-xs text-cyan-400 uppercase tracking-widest mb-2">Scenario 01</div>
+          <h3 class="text-2xl font-bold mb-3">นาทีที่ 89</h3>
+          <p class="text-slate-400 leading-relaxed">บอลกำลังจะเข้าประตู Salah วิ่งฉีก... <br><span class="text-pink-300 italic">"พี่! ขัดห้องน้ำเดี๋ยวนี้!"</span></p>
+        </div>
+        <div class="problem-card reveal" style="--accent: #ec4899;">
+          <div class="text-6xl mb-4">🏎️</div>
+          <div class="text-xs text-pink-400 uppercase tracking-widest mb-2">Scenario 02</div>
+          <h3 class="text-2xl font-bold mb-3">โค้งสุดท้าย F1</h3>
+          <p class="text-slate-400 leading-relaxed">Verstappen กำลังจะแซง Hamilton... <br><span class="text-pink-300 italic">"พี่! ทำไมไม่ช่วยล้างห้องน้ำ?"</span></p>
+        </div>
+        <div class="problem-card reveal" style="--accent: #a855f7;">
+          <div class="text-6xl mb-4">🎮</div>
+          <div class="text-xs text-purple-400 uppercase tracking-widest mb-2">Scenario 03</div>
+          <h3 class="text-2xl font-bold mb-3">Ranked นัดสุดท้าย</h3>
+          <p class="text-slate-400 leading-relaxed">กำลังจะคว้า Diamond ในที่สุด... <br><span class="text-pink-300 italic">"ออกจากเกม! ไปขัดห้องน้ำ!"</span></p>
+        </div>
+      </div>
+
+      <!-- Stress quote -->
+      <div class="mt-16 text-center reveal">
+        <blockquote class="text-2xl md:text-3xl italic text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          "เกมหยุดได้ตอนพักเบรก แต่ <span class="text-pink-400">Ranked แพ้คือแพ้</span>... <br>เราต้องการทางออกที่ไม่ต้องเลือก"
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= SOLUTION ========================= -->
+  <section id="solution" class="py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/20 to-transparent"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <div class="text-cyan-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">💣 ทางออก</div>
+        <h2 class="text-4xl md:text-6xl font-black mb-6">
+          <span class="bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">Bath Bomb</span> คือคำตอบ
+        </h2>
+        <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          แค่ <span class="text-cyan-400 font-bold underline decoration-cyan-400/40 underline-offset-4">โยน</span>
+          ลงพื้น →
+          <span class="text-pink-400 font-bold underline decoration-pink-400/40 underline-offset-4">รอ 10-15 นาที</span> →
+          <span class="text-purple-400 font-bold underline decoration-purple-400/40 underline-offset-4">ล้างน้ำเปล่า</span>
+          เสร็จ!
+        </p>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="max-w-4xl mx-auto reveal">
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Old way -->
+          <div class="p-8 rounded-3xl bg-red-950/30 border border-red-500/20">
+            <div class="text-red-400 text-sm uppercase tracking-widest mb-4 font-semibold">😫 วิธีเดิม</div>
+            <ul class="space-y-3 text-slate-300">
+              <li class="flex items-start gap-3"><span class="text-red-400">✕</span><span>นั่งคุกเข่าขัดที่ละแปรง 45 นาที</span></li>
+              <li class="flex items-start gap-3"><span class="text-red-400">✕</span><span>ปวดหลัง ปวดเข่า กลิ่นน้ำยาแสบจมูก</span></li>
+              <li class="flex items-start gap-3"><span class="text-red-400">✕</span><span>พลาด Ranked / พลาดประตูสำคัญ</span></li>
+              <li class="flex items-start gap-3"><span class="text-red-400">✕</span><span>เมียยังไม่พอใจอยู่ดี</span></li>
+            </ul>
+          </div>
+          <!-- New way -->
+          <div class="p-8 rounded-3xl bg-cyan-950/30 border border-cyan-500/30 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl"></div>
+            <div class="text-cyan-400 text-sm uppercase tracking-widest mb-4 font-semibold relative">😎 วิธี BombBath</div>
+            <ul class="space-y-3 text-slate-200 relative">
+              <li class="flex items-start gap-3"><span class="text-cyan-400">✓</span><span>โยน 1 ลูก ใช้เวลารวม 30 วินาที</span></li>
+              <li class="flex items-start gap-3"><span class="text-cyan-400">✓</span><span>กลับไปดูบอล/เล่นเกมต่อได้ทันที</span></li>
+              <li class="flex items-start gap-3"><span class="text-cyan-400">✓</span><span>คราบหายเกลี้ยง พื้นเงาวับ</span></li>
+              <li class="flex items-start gap-3"><span class="text-cyan-400">✓</span><span>เมียยิ้ม + คุณก็มีความสุข</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= HOW IT WORKS ========================= -->
+  <section id="how" class="py-32 relative">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-20 reveal">
+        <div class="text-purple-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">⚡ วิธีใช้</div>
+        <h2 class="text-4xl md:text-6xl font-black mb-6">3 ขั้นตอน เสร็จงาน</h2>
+        <p class="text-slate-400 text-lg">เหมือนสั่ง pizza แต่ง่ายกว่า</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 relative">
+        <!-- Connecting line -->
+        <div class="hidden md:block absolute top-1/3 left-1/6 right-1/6 h-px bg-gradient-to-r from-cyan-500/0 via-pink-500/50 to-purple-500/0"></div>
+
+        <div class="step-card reveal">
+          <div class="step-number">01</div>
+          <div class="step-icon">💣</div>
+          <h3 class="text-2xl font-bold mb-3">โยน</h3>
+          <p class="text-slate-400">โยน Bath Bomb ลงบนพื้นห้องน้ำที่เปียก ปล่อยให้มันทำงาน</p>
+          <div class="step-time">⏱️ 10 วินาที</div>
+        </div>
+
+        <div class="step-card reveal" style="animation-delay: 0.2s;">
+          <div class="step-number">02</div>
+          <div class="step-icon">🎮</div>
+          <h3 class="text-2xl font-bold mb-3">เล่นต่อ</h3>
+          <p class="text-slate-400">กลับไปดูบอล / เล่นเกม / ดู F1 อย่างใจเย็น โฟมจะกัดคราบให้เอง</p>
+          <div class="step-time">⏱️ 10-15 นาที</div>
+        </div>
+
+        <div class="step-card reveal" style="animation-delay: 0.4s;">
+          <div class="step-number">03</div>
+          <div class="step-icon">💧</div>
+          <h3 class="text-2xl font-bold mb-3">ล้างน้ำเปล่า</h3>
+          <p class="text-slate-400">ฉีดน้ำเปล่าทิ้ง คราบหายเกลี้ยง พื้นเงาวับ ไม่ต้องขัด</p>
+          <div class="step-time">⏱️ 30 วินาที</div>
+        </div>
+      </div>
+
+      <!-- Time saved meter -->
+      <div class="mt-20 max-w-2xl mx-auto reveal">
+        <div class="text-center mb-4">
+          <div class="text-sm text-slate-400 uppercase tracking-widest">เวลาที่ประหยัด</div>
+          <div class="text-5xl font-black bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent" id="savedTime">0 นาที</div>
+        </div>
+        <div class="h-3 rounded-full bg-white/5 overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full" id="savedBar" style="width: 0%; transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+        </div>
+        <div class="flex justify-between mt-2 text-xs text-slate-500">
+          <span>วิธีเดิม: 45 นาที</span>
+          <span class="text-cyan-400">ประหยัด 30 นาที = ดูบอลครบครึ่งแรก ⚽</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PRODUCTS ========================= -->
+  <section id="products" class="py-32 relative">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <div class="text-pink-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">🛍️ สินค้า</div>
+        <h2 class="text-4xl md:text-6xl font-black mb-6">เลือกสไตล์ของคุณ</h2>
+        <p class="text-slate-400 text-lg">3 รุ่น 3 สไตล์ เลือกตามอาชีพอดิเรก</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="product-card reveal">
+          <div class="product-orb orb-cyan"></div>
+          <h3 class="text-2xl font-bold mb-2">Gamer Edition</h3>
+          <p class="text-cyan-400 text-sm mb-4">⚡ กลิ่น Energy Drink</p>
+          <p class="text-slate-400 mb-6 text-sm">สำหรับพ่อบ้านที่ตี Ranked ไม่หยุด ใช้แล้วยังคงสมาธิ</p>
+          <ul class="space-y-2 text-sm text-slate-400 mb-6">
+            <li>✓ ไม่หกใส่ keyboard</li>
+            <li>✓ กลิ่นเย็นช่วยตื่น</li>
+            <li>✓ ฟองโฟมสีฟ้านีออน</li>
+          </ul>
+          <div class="flex items-baseline gap-2 mb-6">
+            <span class="text-3xl font-bold">฿149</span>
+            <span class="text-slate-500 line-through">฿199</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 ml-auto">-25%</span>
+          </div>
+          <button class="add-to-cart w-full py-3 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all font-semibold" data-product="Gamer Edition" data-price="149">
+            🛒 เพิ่มลงตะกร้า
+          </button>
+        </div>
+
+        <div class="product-card reveal featured">
+          <div class="featured-badge">🔥 ขายดี</div>
+          <div class="product-orb orb-pink"></div>
+          <h3 class="text-2xl font-bold mb-2">Football Edition</h3>
+          <p class="text-pink-400 text-sm mb-4">❄️ กลิ่นเปปเปอร์มินต์</p>
+          <p class="text-slate-400 mb-6 text-sm">สำหรับพ่อบ้านที่ดูบอลทุกลีกบนโลก ใช้แล้วสดชื่นเหมือนเชียร์อยู่ในสนาม</p>
+          <ul class="space-y-2 text-sm text-slate-400 mb-6">
+            <li>✓ เหมาะกับฤดูร้อน</li>
+            <li>✓ กลิ่นเย็นนาน 24 ชม.</li>
+            <li>✓ ฟองโฟมสีชมพู-ม่วง</li>
+          </ul>
+          <div class="flex items-baseline gap-2 mb-6">
+            <span class="text-3xl font-bold">฿149</span>
+            <span class="text-slate-500 line-through">฿199</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 ml-auto">-25%</span>
+          </div>
+          <button class="add-to-cart w-full py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-105 transition-all font-semibold" data-product="Football Edition" data-price="149">
+            🛒 เพิ่มลงตะกร้า
+          </button>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-orb orb-purple"></div>
+          <h3 class="text-2xl font-bold mb-2">Pro Edition</h3>
+          <p class="text-purple-400 text-sm mb-4">🌿 กลิ่นลาเวนเดอร์</p>
+          <p class="text-slate-400 mb-6 text-sm">สำหรับพ่อบ้านมืออาชีพที่อยากเอาใจเมีย — กลิ่นนี้เมียชอบมาก</p>
+          <ul class="space-y-2 text-sm text-slate-400 mb-6">
+            <li>✓ Wife-Approved™</li>
+            <li>✓ กลิ่นหรู Premium</li>
+            <li>✓ ฟองโฟมสีม่วง</li>
+          </ul>
+          <div class="flex items-baseline gap-2 mb-6">
+            <span class="text-3xl font-bold">฿149</span>
+            <span class="text-slate-500 line-through">฿199</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 ml-auto">-25%</span>
+          </div>
+          <button class="add-to-cart w-full py-3 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 hover:bg-purple-500 hover:text-white transition-all font-semibold" data-product="Pro Edition" data-price="149">
+            🛒 เพิ่มลงตะกร้า
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= TESTIMONIALS ========================= -->
+  <section class="py-32 relative">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-16 reveal">
+        <div class="text-cyan-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">💬 รีวิวจากพ่อบ้านตัวจริง</div>
+        <h2 class="text-4xl md:text-5xl font-black mb-6">เสียงจากสนาม</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="testimonial-card reveal">
+          <div class="flex gap-1 mb-3 text-yellow-400">★★★★★</div>
+          <p class="text-slate-300 leading-relaxed mb-4">"ตอนแรกไม่เชื่อ พอลองโยนใส่ห้องน้ำตอนเริ่มเกม Liverpool vs Arsenal กลับมาตอน FT พื้นเงาวับ เมียงงเลย"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-bold">B</div>
+            <div>
+              <div class="font-semibold text-sm">บอย, 34</div>
+              <div class="text-xs text-slate-500">นนทบุรี · แฟน Liverpool</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="animation-delay: 0.1s;">
+          <div class="flex gap-1 mb-3 text-yellow-400">★★★★★</div>
+          <p class="text-slate-300 leading-relaxed mb-4">"ใช้ Pro Edition แล้วเมียบอกว่า 'หอมจัง' ครั้งแรกในชีวิตที่เมียชมเรื่องห้องน้ำ ขอบคุณครับ"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold">P</div>
+            <div>
+              <div class="font-semibold text-sm">ป๊อก, 42</div>
+              <div class="text-xs text-slate-500">เชียงใหม่ · พ่อบ้านมือใหม่</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="animation-delay: 0.2s;">
+          <div class="flex gap-1 mb-3 text-yellow-400">★★★★★</div>
+          <p class="text-slate-300 leading-relaxed mb-4">"Gamer Edition โยนตอนเข้า lobby Valorant กลับมาตอน MVP ห้องน้ำสะอาด ranked ก็ไม่หลุด นี่แหละ life hack"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center font-bold">N</div>
+            <div>
+              <div class="font-semibold text-sm">โน้ต, 28</div>
+              <div class="text-xs text-slate-500">กรุงเทพฯ · Immortal Valorant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= ORDER FORM ========================= -->
+  <section id="order" class="py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-pink-950/20 to-cyan-950/30"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12 reveal">
+          <div class="text-pink-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">📦 สั่งซื้อ</div>
+          <h2 class="text-4xl md:text-5xl font-black mb-4">
+            พร้อมเป็น <span class="bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">พ่อบ้านมือโปร</span>?
+          </h2>
+          <p class="text-slate-400">กรอกข้อมูลเพื่อรับ Bath Bomb ส่งฟรีทั่วประเทศ • เก็บเงินปลายทาง</p>
+        </div>
+
+        <form class="space-y-4 reveal p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm" id="orderForm">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">ชื่อ-นามสกุล</label>
+              <input type="text" name="name" required placeholder="สมชาย ใจดี" class="form-input">
+            </div>
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">เบอร์โทร</label>
+              <input type="tel" name="phone" required placeholder="081-234-5678" class="form-input" pattern="[0-9\-\s]{9,}">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-2">ที่อยู่จัดส่ง</label>
+            <textarea name="address" required placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์" rows="3" class="form-input"></textarea>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">เลือกสินค้า</label>
+              <select name="product" required class="form-input">
+                <option value="">— เลือก —</option>
+                <option>Gamer Edition (กลิ่น Energy)</option>
+                <option>Football Edition (กลิ่นเปปเปอร์มินต์)</option>
+                <option>Pro Edition (กลิ่นลาเวนเดอร์)</option>
+                <option>Mix Pack (3 รุ่น)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-400 mb-2">จำนวน</label>
+              <input type="number" name="quantity" min="1" max="99" value="1" required class="form-input">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm text-slate-400 mb-2">หมายเหตุ (ไม่บังคับ)</label>
+            <textarea name="note" placeholder="เช่น โทรก่อนส่ง / ทีมที่เชียร์ / เกมที่เล่น" rows="2" class="form-input"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 font-bold text-lg hover:scale-[1.02] hover:shadow-2xl hover:shadow-pink-500/40 transition-all">
+            ✅ ยืนยันสั่งซื้อ
+          </button>
+          <p class="text-center text-xs text-slate-500 mt-4">
+            ส่งฟรีทั่วประเทศ · เก็บเงินปลายทาง · รับประกันคุณภาพ 100%
+          </p>
+        </form>
+
+        <!-- Success modal -->
+        <div id="successModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md">
+          <div class="bg-slate-900 border border-cyan-500/30 rounded-3xl p-8 max-w-md mx-4 text-center" id="successContent">
+            <div class="text-6xl mb-4">🎉</div>
+            <h3 class="text-2xl font-bold mb-3">ขอบคุณครับพ่อบ้าน!</h3>
+            <p class="text-slate-400 mb-6">เราจะติดต่อกลับใน 24 ชั่วโมง<br>ตอนนี้กลับไปดูบอลต่อได้เลยครับ ⚽</p>
+            <div class="text-sm text-cyan-400 mb-6" id="orderId"></div>
+            <button id="closeModal" class="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-pink-500 font-semibold">
+              เยี่ยม
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FAQ ========================= -->
+  <section class="py-24 relative">
+    <div class="container mx-auto px-6 relative z-10 max-w-3xl">
+      <div class="text-center mb-12 reveal">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">คำถามที่พบบ่อย</h2>
+      </div>
+      <div class="space-y-3">
+        <details class="faq-item reveal">
+          <summary>ใช้กับห้องน้ำแบบไหนได้บ้าง?</summary>
+          <p>ใช้ได้กับห้องน้ำกระเบื้องทุกประเภท พื้นเปียก-แห้ง คราบเก่า-ใหม่ ไม่ทำลายพื้นผิว</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>ปลอดภัยต่อผิวไหม?</summary>
+          <p>สูตรอ่อนโยน pH สมดุล ไม่มีสารตกค้าง ผ่านมาตรฐาน อย. (กำลังขอ) ใช้แล้วกลิ่นหอม ไม่แสบจมูก</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>ถ้าใช้แล้วไม่พอใจ?</summary>
+          <p>คืนเงินภายใน 7 วัน ไม่ถามเหตุผล (แต่เราว่าคุณจะติดใจ)</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>เมียจะรู้ไหมว่าเราใช้?</summary>
+          <p>รู้ครับ — เพราะเมียจะถามว่า "ทำไมห้องน้ำสะอาดจัง?" 😎</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="py-12 border-t border-white/5 relative z-10">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="text-2xl font-extrabold mb-3 flex items-center gap-2">
+            <span>💣</span>
+            <span class="bg-gradient-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">BombBath</span>
+          </div>
+          <p class="text-slate-400 text-sm">จากพ่อบ้านสู่พ่อบ้าน — เครื่องสำอางห้องน้ำสำหรับคนที่ไม่อยากเสียเวลาขัด</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">ติดต่อ</div>
+          <div class="space-y-2 text-sm text-slate-400">
+            <div>📱 LINE: @bombbath</div>
+            <div>📧 hi@bombbath.co.th</div>
+            <div>📍 กรุงเทพมหานคร, ประเทศไทย</div>
+          </div>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">ติดตาม</div>
+          <div class="flex gap-3">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-cyan-500/20 flex items-center justify-center transition-colors">📘</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-pink-500/20 flex items-center justify-center transition-colors">📷</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-purple-500/20 flex items-center justify-center transition-colors">🎵</a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/5 text-center text-slate-500 text-sm">
+        © 2026 BombBath · จากพ่อบ้านสู่พ่อบ้าน · Made with 💚 in Thailand
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
